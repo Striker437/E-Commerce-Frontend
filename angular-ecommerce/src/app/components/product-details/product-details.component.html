@@ -1,0 +1,18 @@
+<div class="detail-sction">
+<div class="container-fluid">
+
+    <img src="{{product.imageURL}}"  class="detail-img">
+    <h3>{{product.name }}</h3>
+    <div class="price"  >{{product.price | currency:'INR'}}</div>
+    <a href="#" class="primary-btn">Add to Cart</a>
+
+    <hr>
+    <h4>Description</h4>
+    <p>{{product.description}}</p>
+
+
+    <a routerLink="/product">Back to productlist</a>
+</div>
+
+
+</div>

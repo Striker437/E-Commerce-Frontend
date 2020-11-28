@@ -1,0 +1,19 @@
+
+<div class="form-header">
+    <!--use for getting the input data from search box --> <input #myInput type="text"
+        placeholder="Search for products ..." class="au-input au-input-xl" type="text"
+        (keyup.enter)="doSearch(myInput.value)" />          <!--this function is used for when we enter the enter key for search box-->
+    <button (click)="doSearch(myInput.value)"   class="au-btn-submit" >
+        Search
+    </button>
+</div>
+
+
+
+
+
+
+
+
+
+
