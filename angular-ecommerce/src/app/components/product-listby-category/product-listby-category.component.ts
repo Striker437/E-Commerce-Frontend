@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListbyCategoryComponent implements OnInit {
 
   searchMode:boolean;
+  DeleteMode:boolean;
   products:Product[];
   constructor(private ProductService:ProductService,
              private route:ActivatedRoute,
@@ -20,11 +21,15 @@ export class ProductListbyCategoryComponent implements OnInit {
 
  
   ngOnInit(): void {
+    this.DeleteMode=this.route.snapshot.paramMap.has('deleteIdp');
     this.searchMode=this.route.snapshot.paramMap.has('keyword');
     this.route.paramMap.subscribe(() =>
     {
       if(this.searchMode)
     this.searchProducts();
+
+    else if(this.DeleteMode)
+    this.DeleteProduct();
 
     else{
       this.listProducts();
@@ -34,6 +39,7 @@ export class ProductListbyCategoryComponent implements OnInit {
   
     
    }
+  
   
    listProducts() {
 
@@ -50,7 +56,7 @@ export class ProductListbyCategoryComponent implements OnInit {
    }
 
 
-   searchProducts() {
+   searchProducts() {                             //search products functionality
     const theKeyword:String=this.route.snapshot.paramMap.get('keyword');
 
 
@@ -71,6 +77,34 @@ export class ProductListbyCategoryComponent implements OnInit {
     const cartItem=new CartItem(theProduct);
     this.cartService.addToCart(cartItem);
   }
+
+
+
+
+
+
+  DeleteProduct() {                    //delete product
+
+    const deleteId:String=this.route.snapshot.paramMap.get('deleteIdp');
+
+
+    this.ProductService.DeleteProduct(deleteId).subscribe(
+
+      data=>
+      {
+        this.products=data;
+      }
+
+      
+
+    
+
+    )
+    
+  }
+
+
+
 
 
 }

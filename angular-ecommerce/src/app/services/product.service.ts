@@ -11,6 +11,8 @@ export class ProductService {
   
   
   
+  
+  
 
   constructor(private httpClient:HttpClient) { }      //httpclient is injected into constructor
 
@@ -45,6 +47,17 @@ export class ProductService {
 
   getProductDetail(productid: number) {
     return this.httpClient.get<Product>('http://localhost:8080/product/' + productid );
+  }
+
+
+
+  DeleteProduct(deleteId: String) {
+    return this.httpClient.delete<Product[]>('http://localhost:8080/product/' + deleteId );
+  }
+
+
+  DeleteProductCategory(deleteId: String) {
+    return this.httpClient.delete<Product[]>('http://localhost:8080/product/categorywise/' + deleteId );
   }
 
 

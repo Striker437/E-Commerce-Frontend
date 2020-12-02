@@ -17,13 +17,18 @@ export class ProductListComponent implements OnInit {
   
   products:Product[];
   currentCategoryId:number;
+  DeleteMode: boolean;
   constructor(private ProductService:ProductService,
               private route:ActivatedRoute,
               private cartService:CartService) { }
 
-  ngOnInit(): void {                          
+  ngOnInit(): void {
+    this.DeleteMode=this.route.snapshot.paramMap.has('deleteIdc');                          
     this.route.paramMap.subscribe(() =>
     {
+      if(this.DeleteMode)
+      this.DeleteProduct();
+      else
       this.listProductsbyCategory();
     });
     
@@ -61,6 +66,29 @@ export class ProductListComponent implements OnInit {
     console.log('Adding to cart',theProduct.name,'  product price',theProduct.price);
     const cartItem=new CartItem(theProduct);
     this.cartService.addToCart(cartItem);
+  }
+
+
+
+
+  DeleteProduct() {                    //delete product
+
+    const deleteId:String=this.route.snapshot.paramMap.get('deleteIdc');
+
+
+    this.ProductService.DeleteProductCategory(deleteId).subscribe(
+
+      data=>
+      {
+        this.products=data;
+      }
+
+      
+
+    
+
+    )
+    
   }
 
 

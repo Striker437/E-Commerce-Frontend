@@ -11,6 +11,8 @@ const routes: Routes = [
  {path: 'category' , component:ProductListComponent},
  {path: 'product/:id' , component:ProductDetailsComponent},
  {path: 'product' , component:ProductListbyCategoryComponent},
+ {path: 'deleteProduct/:deleteIdp' , component:ProductListbyCategoryComponent},
+ {path: 'deleteProductcategorywise/:deleteIdc' , component:ProductListComponent},
  {path: '' , redirectTo:'/product' ,pathMatch:'full'},
  {path: '**' , redirectTo:'/product',pathMatch:'full'},
 

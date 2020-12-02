@@ -21,6 +21,7 @@
               
               <div class="price">{{product.price | currency:'INR'}}</div>
               <button (click)="addToCart(product)" class="btn btn-primary btn-sm">Add to cart</button>
+              <button routerLink="/deleteProduct/{{product.id}}" class="btn btn-danger btn-sm">Delete Product</button>
             </div>
           </div>
 
