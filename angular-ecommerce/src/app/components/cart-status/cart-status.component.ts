@@ -27,6 +27,8 @@ export class CartStatusComponent implements OnInit {
     )
 
 
+
+    //subsrcibe to total quantity(Events)
     this.cartService.totalquantity.subscribe(
 
       data=>
@@ -37,7 +39,7 @@ export class CartStatusComponent implements OnInit {
 
     )
 
-    //subsrcibe to total quantity
+    
   }
 
 }

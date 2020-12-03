@@ -74,7 +74,7 @@ export class ProductListbyCategoryComponent implements OnInit {
   addToCart(theProduct:Product)
   {
     console.log('Adding to cart',theProduct.name,'  product price',theProduct.price);
-    const cartItem=new CartItem(theProduct);
+    const cartItem=new CartItem(theProduct);   //pass the product to newly created cartitem in constructor where it will initialise the id, name and imageurl for product
     this.cartService.addToCart(cartItem);
   }
 

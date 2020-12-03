@@ -8,6 +8,7 @@ import { CartItem } from '../Model/cart-item';
 export class CartService {
 
   cartItems:CartItem[]=[];
+  //subject is a subclass of observable ,we can use subject to publish events in our code , the event will be sent to all of the subscribers ,and in this case subscriber is CartStatusComponent
   totalPrice: Subject<number>=new Subject<number>();   //event for subscribe
   totalquantity:Subject<number>=new Subject<number>();    //event for subscribe
   constructor() { }
@@ -75,8 +76,10 @@ export class CartService {
       totalQuantityValue+=currentcartItem.quantity;
     }
 
-    this.totalPrice.next(totalPriceValue);
-    this.totalquantity.next(totalQuantityValue);
+
+    //publish the new values ,all subscriber will receive the data
+    this.totalPrice.next(totalPriceValue);  //one event for totalprice
+    this.totalquantity.next(totalQuantityValue);    //one event for totalquantity
 
     this.logCartData(totalPriceValue,totalQuantityValue);
   }
