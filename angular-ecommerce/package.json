@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.1",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@types/jquery": "^3.5.4",
+    "angular-toastify": "^1.0.3",
     "bootstrap": "^4.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

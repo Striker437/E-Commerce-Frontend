@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,9 +28,10 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularToastifyModule
   ],
-  providers: [ProductService],
+  providers: [ToastService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

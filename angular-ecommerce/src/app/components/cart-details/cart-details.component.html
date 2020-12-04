@@ -31,7 +31,7 @@
 
                                 <!--decrement button-->
                                 <div class="col">
-                                    <button class="btn btn-primary btn-sm">
+                                    <button class="btn btn-primary btn-sm" (click)="DecrementQuantity(tempcartItem)">
                                         <i class="fas fa-minus"></i>
                                     </button>
 
@@ -39,7 +39,7 @@
 
                                 <!--ends-->
 
-                                <div class="col ml-4 mr-2">{{tempcartItem.quantity}}</div>
+                                <div class="col ml-4 mr-2">{{tempcartItem.quantity}}</div>   <!--main quantity value for cartitem-->
 
 
                                 <!--increment button-->
@@ -49,8 +49,13 @@
                                     </button>
 
                                 </div>
-
                                 <!--ends-->
+
+                                <button (click)="remove(tempcartItem)" class="btn btn-primary btn-sm" >Remove</button>   <!--  remove the particular cart item-->
+
+
+
+                                
 
 
                             </div>
@@ -82,6 +87,8 @@
 
 
             </table>
+
+            <a routerLink="/product">Back to Product List</a>
 
         </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastService } from 'angular-toastify';
 import { CartItem } from 'src/app/Model/cart-item';
 import { Product } from 'src/app/Model/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -17,7 +18,8 @@ export class ProductListbyCategoryComponent implements OnInit {
   products:Product[];
   constructor(private ProductService:ProductService,
              private route:ActivatedRoute,
-             private cartService:CartService) { }
+             private cartService:CartService,
+             private toastService: ToastService) { }
 
  
   ngOnInit(): void {
@@ -74,6 +76,7 @@ export class ProductListbyCategoryComponent implements OnInit {
   addToCart(theProduct:Product)
   {
     console.log('Adding to cart',theProduct.name,'  product price',theProduct.price);
+    //this.toastService.success("Added Successfully")
     const cartItem=new CartItem(theProduct);   //pass the product to newly created cartitem in constructor where it will initialise the id, name and imageurl for product
     this.cartService.addToCart(cartItem);
   }

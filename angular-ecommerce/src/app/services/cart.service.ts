@@ -6,6 +6,7 @@ import { CartItem } from '../Model/cart-item';
   providedIn: 'root'
 })
 export class CartService {
+  
 
   cartItems:CartItem[]=[];
   //subject is a subclass of observable ,we can use subject to publish events in our code , the event will be sent to all of the subscribers ,and in this case subscriber is CartStatusComponent
@@ -94,6 +95,43 @@ export class CartService {
     }
 
     console.log('total price value' ,totalPriceValue ,'totalQuantityValue' , totalQuantityValue);
+  }
+
+
+
+
+
+  decrementQuantity(thetempcartItem: CartItem) {
+
+
+
+   let quantity=thetempcartItem.quantity--;
+
+   //if quantity becomes 0 then remove cart item
+   if(quantity==0)
+   this.remove(thetempcartItem);
+   else
+   this.computeCartTotals();    //else compute total price
+  }
+
+
+
+
+  remove(thetempcartItem: CartItem) {
+
+    //get index of item in the array
+
+    const itemindex=this.cartItems.findIndex(tempcartItem=>tempcartItem.id==thetempcartItem.id);
+
+
+
+    //if found remove the item from given array using given index
+
+    if(itemindex>-1)
+    this.cartItems.splice(itemindex,1);
+
+
+    
   }
 
 
