@@ -51,7 +51,7 @@ export class CartDetailsComponent implements OnInit {
 
      //compute cart total price and quantity
 
-    // this.cartService.computeCartTotals();
+     this.cartService.computeCartTotals();
 
 
   }

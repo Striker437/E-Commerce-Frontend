@@ -18,8 +18,8 @@
            
             
             <div class="price">{{product.price | currency:'INR'}}</div>
-            <button type="button" (click)="addToCart(product)" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</button>
-            <button  type="button" routerLink="/deleteProductcategorywise/{{product.id}}" class="btn btn-danger btn-sm">Delete Product</button>
+            <button type="button" (click)="addToCart(product)" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>Add to cart</button>
+            <button  type="button" routerLink="/deleteProductcategorywise/{{product.id}}" class="btn btn-danger btn-sm ml-1"> <i class="fa fa-trash mr-1"></i>Delete Product</button>
             
           </div>
         </div>

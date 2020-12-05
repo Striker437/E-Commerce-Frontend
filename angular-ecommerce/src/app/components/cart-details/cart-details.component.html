@@ -51,7 +51,7 @@
                                 </div>
                                 <!--ends-->
 
-                                <button (click)="remove(tempcartItem)" class="btn btn-primary btn-sm" >Remove</button>   <!--  remove the particular cart item-->
+                                <button (click)="remove(tempcartItem)" class="btn btn-primary btn-sm" ><i class="fa fa-trash mr-1"></i>Remove</button>   <!--  remove the particular cart item-->
 
 
 
@@ -75,6 +75,7 @@
                         <p>Total Quantity : {{totalQuantity}}</p>
                         <p>Shipping: Free</p>
                         <p>Total Price : {{totalPrice |currency:'INR'}}</p>
+                        <button class="btn btn-primary" routerLink="/checkout">Checkout</button>
                     </td>
 
                 </tr>
@@ -88,7 +89,7 @@
 
             </table>
 
-            <a routerLink="/product">Back to Product List</a>
+            <button class="btn btn-primary btn-sm" routerLink="/product"><i class="fa fa-arrow-left mr-1"></i>Back to Product List</button>
 
         </div>
 
