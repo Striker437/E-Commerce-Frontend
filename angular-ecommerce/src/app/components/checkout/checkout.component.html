@@ -120,7 +120,12 @@
             
                 <div class="input-space">
             
-                    <input formControlName="state" type="text">
+                    <select  formControlName="state">
+                        <option *ngFor="let state of shippingAddressStates" [ngValue]="state"  >
+                            {{state.name}}
+                        </option>
+       
+                    </select>
                 </div>
             
             
@@ -136,9 +141,11 @@
                 <div class="col-md-9">
                 
                     <div class="input-space">
-                     <select formControlName="country">
-                         <option >India</option>
-                         <option >Australia</option>
+                     <select (change)="getStates('shippingAddress')"  formControlName="country" >
+                         <option *ngFor="let country of countries"  [ngValue]="country"  >
+                             {{country.name}}
+                            </option>
+        
                      </select>
                         
                     </div>
@@ -241,7 +248,12 @@
                 
                     <div class="input-space">
                 
-                        <input formControlName="state" type="text">
+                        <select  formControlName="state">
+                            <option *ngFor="let state of billingAddressStates" [ngValue]="state"  >
+                                {{state.name}}
+                            </option>
+           
+                        </select>
                     </div>
                 
                 
@@ -258,7 +270,10 @@
                     
                         <div class="input-space">
                     
-                            <input formControlName="country" type="text">
+                            <select (change)="getStates('billingAddress')"  formControlName="country">
+                                <option *ngFor="let country of countries" [ngValue]="country"  >{{country.name}}</option>
+               
+                            </select>
                         </div>
                     
                     

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/Model/Country';
+import { State } from 'src/app/Model/State';
 import { CartService } from 'src/app/services/cart.service';
 import { FormService } from 'src/app/services/form.service';
 
@@ -10,6 +12,10 @@ import { FormService } from 'src/app/services/form.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  shippingAddressStates:State[]=[];
+  billingAddressStates:State[]=[];
+  countries:Country[]=[];
+  states:State[]=[];
   checkOutFormGroup:FormGroup   //formgroup name we will use this in our html
   totalPrice:number=0;
   totalQuantity:number=0;
@@ -64,9 +70,18 @@ export class CheckoutComponent implements OnInit {
 
     this.reviewOrder();
 
+    this.getCountries();
+
+    
+
+  
+
 
     
   }
+  
+  
+ 
   
  
 
@@ -125,13 +140,13 @@ export class CheckoutComponent implements OnInit {
     const currentYear:number=new Date().getFullYear();     //get the current year
     const selectedYear:number=creditCardFormGroup.value.expirationYear;   //get the selected year from frontend ui
 
-    //if the current year is equal to selected year ,then start with current month
+    //if the current year is equal to selected year ,then start with current month till end month
     let  startMonth:number;
     if(currentYear==selectedYear)
     startMonth=new Date().getMonth()+1;
 
 
-    else
+    else     //all month 
     startMonth=1;
 
     this.formService.getCreditCardMonths(startMonth).subscribe(
@@ -175,6 +190,51 @@ this.creditCardMonths=data
     )
     
   }
+
+
+
+
+  getCountries() {
+
+    this.formService.getCountries().subscribe(
+      data=>
+      {
+this.countries=data;
+      }
+    )
+    
+  }
+
+
+
+
+  
+
+
+
+  getStates(formGroupName:string)
+  {
+    const formGroup=this.checkOutFormGroup.get(formGroupName);
+    const countryCode=formGroup.value.country.code;
+    const countryName=formGroup.value.country.name;
+    console.log('countryCode:',countryCode,'countryName:', countryName);
+
+    this.formService.getStates(countryCode).subscribe(
+      data=>
+      {
+        if(formGroupName== 'shippingAddress')
+       this.shippingAddressStates=data
+
+
+       else
+       this.billingAddressStates=data
+      }
+    )
+
+  }
+
+
+  
 
 
 
