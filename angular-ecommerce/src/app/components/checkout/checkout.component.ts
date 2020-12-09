@@ -94,6 +94,12 @@ export class CheckoutComponent implements OnInit {
     {
       this.checkOutFormGroup.controls.billingAddress
       .setValue(this.checkOutFormGroup.controls.shippingAddress.value);    //copy shipping to billing address on checking checkbox in frontend
+
+      console.log('on checking the box copy',this.checkOutFormGroup.controls.shippingAddress.value)
+
+      //bug fix code copy the state drop down list from shipping address to billing address
+      this.billingAddressStates=this.shippingAddressStates;
+      
     }
 
     else{
@@ -103,10 +109,7 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  onSubmit()
-  {
-    console.log("Handling form event",this.checkOutFormGroup.get('customer').value);//getting the value for form control in input
-  }
+  
 
 
 
@@ -230,6 +233,16 @@ this.countries=data;
        this.billingAddressStates=data
       }
     )
+
+  }
+
+  
+
+  onSubmit()
+  {
+    console.log("Handling form event",this.checkOutFormGroup.get('customer').value);//getting the value for form control in input
+    console.log("shipping address",this.checkOutFormGroup.get('shippingAddress').value)
+    console.log("billing address",this.checkOutFormGroup.get('billingAddress').value)
 
   }
 
